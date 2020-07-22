@@ -3,13 +3,11 @@ const app = express();
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
+const config = require('./config/key');
 const User = require('./models/User');
 
 mongoose
-  .connect(
-    'mongodb+srv://Nick:Olusaf1!@cluster0.6rqrk.mongodb.net/Cluster0?retryWrites=true&w=majority',
-    { useUnifiedTopology: true, useNewUrlParser: true }
-  )
+  .connect(config.mongoURI, { useUnifiedTopology: true, useNewUrlParser: true })
   .then(() => console.log(`MongoDB connected!`))
   .catch(err => console.log(err));
 
