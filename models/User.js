@@ -5,7 +5,7 @@ const bcrypt = require('bcrypt');
 const saltRounds = 10;
 
 const UserSchema = new mongoose.Schema({
-  username: {
+  name: {
     type: String,
     trim: true,
     maxlength: 20,
@@ -75,5 +75,16 @@ UserSchema.pre('save', function (next) {
     next();
   }
 });
+
+UserSchema.statics.findByToken = function (token, callback) {
+  var user = this;
+
+  jwt.verify(token, 'secret', function (err, decode) {
+    user.findOne({ _id: decode, token: token }, function (err, user) {
+      if (err) return callback(err);
+      callback(null, user);
+    });
+  });
+};
 
 module.exports = mongoose.model('User', UserSchema);
