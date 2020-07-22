@@ -18,14 +18,14 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cookieParser());
 
-app.get('api/users/auth', auth, (req, res) => {
+app.get('/api/users/auth', auth, (req, res) => {
+  console.log(res);
   res.status(200).json({
     _id: req.user._id,
     isAdmin: req.user.role === 0 ? false : true,
     isAuth: true,
     email: req.user.email,
     name: req.user.name,
-    role: req.user.role,
   });
 });
 
@@ -43,7 +43,7 @@ app.post('/api/users/register', (req, res) => {
   });
 });
 
-app.post('/login', (req, res) => {
+app.post('/api/users/login', (req, res) => {
   User.findOne({ email: req.body.email }, (err, user) => {
     if (!user)
       return res.json({
@@ -65,6 +65,19 @@ app.post('/login', (req, res) => {
       });
     });
   });
+});
+
+app.get('/api/users/logout', auth, (req, res) => {
+  User.findOneAndUpdate(
+    { _id: req.user._id },
+    { token: '', tokenExp: '' },
+    (err, doc) => {
+      if (err) return res.json({ success: false, err });
+      return res.status(200).send({
+        success: true,
+      });
+    }
+  );
 });
 
 app.listen(5000);
