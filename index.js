@@ -3,7 +3,7 @@ const app = express();
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
-const { User } = require('./models/User');
+const User = require('./models/User');
 
 mongoose
   .connect(
@@ -18,14 +18,12 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 
 app.post('/api/users/register', (req, res) => {
-  let user = new User(); // TypeError: User is not a constructor
-  user.username = req.body.username;
-  user.email = req.body.email;
-  user.password = req.body.password;
+  const user = new User(req.body);
 
-  user.save((err) {
-    if (err) return next(err);
-    res.json('Registered user');
+  user.save((err, userData) => {
+    if (err) return res.json({ success: false, err });
+
+    return res.status(200).json({ success: true });
   });
 });
 

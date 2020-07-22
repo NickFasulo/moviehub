@@ -4,18 +4,20 @@ const UserSchema = new mongoose.Schema({
   username: {
     type: String,
     trim: true,
-    required: 'Username is requred',
+    maxlength: 20,
+    required: 'Username is required',
     unique: 'Username already exists',
   },
   email: {
     type: String,
     trim: true,
-    unique: 'Email already exists',
     match: [/.+\@.+\..+/, 'Please fill a valid email address'],
     required: 'Email is required',
+    unique: 'Email already in use',
   },
   password: {
     type: String,
+    trim: true,
     required: 'Password is required',
   },
   role: {
