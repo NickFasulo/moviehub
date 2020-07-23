@@ -225,7 +225,7 @@ export class Register extends Component {
           })}
           <ButtonGroup
             buttonStyle="form-button"
-            title="Sign up"
+            title="Sign Up"
             disabled={canSubmit}
           />
         </form>
