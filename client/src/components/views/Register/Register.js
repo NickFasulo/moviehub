@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import validator from 'validator';
-import InputGroup from '../../shared/InputGroup';
-import ButtonGroup from '../../shared/ButtonGroup';
-import { successToast, failureToast } from '../../Toastify/Toast';
-import './Signup.css';
+import InputGroup from '../../Shared/InputGroup';
+import ButtonGroup from '../../Shared/ButtonGroup';
+import { successToast } from '../../Toastify/Toast';
+import './Register.css';
 
-export class Signup extends Component {
+export class Register extends Component {
   state = {
     canSubmit: true,
     formSetting: {
@@ -175,7 +175,7 @@ export class Signup extends Component {
         ...this.state.formSetting,
       };
 
-      await this.props.signupAPI({
+      await this.props.registerAPI({
         email: email.value,
         password: password.value,
         username: username.value,
@@ -204,9 +204,9 @@ export class Signup extends Component {
       });
     }
     return (
-      <div className="signup-container">
-        <h1>Sign up</h1>
-        <form className="signup-form" onSubmit={this.onSubmit}>
+      <div className="register-container">
+        <h1>Register</h1>
+        <form className="register-form" onSubmit={this.onSubmit}>
           {inputArray.map(element => {
             const {
               formSetting: { name, placeholder, value, error },
@@ -238,4 +238,4 @@ const mapStateToProps = state => ({});
 
 const mapDispatchToProps = {};
 
-export default connect(mapStateToProps, mapDispatchToProps)(Signup);
+export default connect(mapStateToProps, mapDispatchToProps)(Register);

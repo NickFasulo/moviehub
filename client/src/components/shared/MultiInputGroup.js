@@ -1,8 +1,8 @@
-import React from 'react';
+import React from './node_modules/react';
 import ChipInputGroup from './ChipInputGroup';
 import InputGroup from './InputGroup';
-import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
+import DatePicker from './node_modules/react-datepicker';
+import './node_modules/react-datepicker/dist/react-datepicker.css';
 
 const MultiInputGroup = props => {
   let multiInputField = null;
