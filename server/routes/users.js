@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const { auth } = require('../middleware/auth');
-const { register, login, logout } = require('../controller/userController');
+const { register, login, logout } = require('../controllers/userController');
 
 router.get('/auth', auth, (req, res) => {
   res.status(200).json({
