@@ -1,10 +1,10 @@
-import React, { Component } from './node_modules/react';
-import validator from './node_modules/validator';
-import { connect } from './node_modules/react-redux';
-import InputGroup from '../../Shared/InputGroup';
-import ButtonGroup from '../../Shared/ButtonGroup';
-import { successToast, failureToast } from '../../Toastify/Toast';
-import { loginAPI } from '../redux/actions/authUserAction';
+import React, { Component } from 'react';
+import validator from 'validator';
+import { connect } from 'react-redux';
+import InputGroup from '../../shared/InputGroup';
+import ButtonGroup from '../../shared/ButtonGroup';
+import { successToast, failureToast } from '../../toastify/Toast';
+import { loginAPI } from '../../redux/_actions/user_actions';
 import './Login.css';
 
 export class Login extends Component {

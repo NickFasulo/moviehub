@@ -1,4 +1,4 @@
-import { SIGN_UP, LOGIN } from '../constants/authUserConstant';
+import { REGISTER, LOGIN } from '../_actions/types';
 
 const initialState = {
   isAuthenticated: false,
@@ -7,7 +7,7 @@ const initialState = {
 
 export default function (state = initialState, action) {
   switch (action.type) {
-    case SIGN_UP:
+    case REGISTER:
       return {
         ...state,
       };

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import validator from 'validator';
-import InputGroup from '../../Shared/InputGroup';
-import ButtonGroup from '../../Shared/ButtonGroup';
-import { successToast } from '../../Toastify/Toast';
+import InputGroup from '../../shared/InputGroup';
+import ButtonGroup from '../../shared/ButtonGroup';
+import { successToast } from '../../toastify/Toast';
 import './Register.css';
 
 export class Register extends Component {

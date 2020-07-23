@@ -24,7 +24,7 @@ class AuthNavLinks extends Component {
             activeClassName="selected"
             onClick={() => {}}
           >
-            logout
+            Logout
           </NavLink>
         </li>
       </ul>

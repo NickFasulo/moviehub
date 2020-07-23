@@ -12,7 +12,7 @@ export default function UnAuthNavLinks() {
           activeStyle={{ fontWeight: 'bold' }}
           activeClassName="selected"
         >
-          Sign up
+          Register
         </NavLink>
       </li>
       <li>
@@ -22,7 +22,7 @@ export default function UnAuthNavLinks() {
           activeStyle={{ fontWeight: 'bold' }}
           activeClassName="selected"
         >
-          login
+          Login
         </NavLink>
       </li>
     </ul>

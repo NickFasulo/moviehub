@@ -1,17 +1,17 @@
 import axios from 'axios';
 import jwt_decode from 'jwt-decode';
-import setAuthToken from '../lib/Axios/setAuthToken';
-import { SIGN_UP, LOGIN } from '../constants/authUserConstant';
+import setAuthToken from '../lib/axios/setAuthToken';
+import { REGISTER, LOGIN } from './types';
 
-export const signupAPI = userInfo => async dispatch => {
+export const registerAPI = userInfo => async dispatch => {
   try {
     let success = await axios.get(
-      'http://localhost:3001/api/users/sign-up',
+      'http://localhost:3001/api/users/register',
       userInfo
     );
 
     dispatch({
-      type: SIGN_UP,
+      type: REGISTER,
       payload: success.data,
     });
 
