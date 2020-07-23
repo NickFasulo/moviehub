@@ -1,0 +1,25 @@
+header {
+  height: 50px;
+  background: blue;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+a {
+  text-decoration: none;
+  color: white;
+}
+.navbar-home {
+  padding: 15px 20px;
+}
+.nav__ul {
+  list-style: none;
+}
+.nav__ul li {
+  display: inline-block;
+  padding: 15px 15px;
+}
+.selected {
+  color: red;
+}
