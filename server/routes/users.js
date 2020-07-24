@@ -1,22 +1,24 @@
 const express = require('express');
 const router = express.Router();
-const { auth } = require('../middleware/auth');
-const { register, login, logout } = require('../controllers/userController');
+const userController = require('../controllers/userController');
+const passport = require('passport');
 
-router.get('/auth', auth, (req, res) => {
-  res.status(200).json({
-    _id: req.user._id,
-    isAdmin: req.user.role === 0 ? false : true,
-    isAuth: true,
-    email: req.user.email,
-    name: req.user.name,
-  });
+router.get(
+  '/',
+  passport.authenticate('jwt-user', { session: false }),
+  function (req, res, next) {
+    console.log(req.user);
+    res.send('From User')
+  }
+);
+
+router.post('/register', userController.register);
+
+router.post('/login', userController.login);
+
+router.get('/logout', function (req, res) {
+  req.logout();
+  res.redirect('/');
 });
-
-router.post('/register', register);
-
-router.post('/login', login);
-
-router.get('/logout', auth, logout);
 
 module.exports = router;
